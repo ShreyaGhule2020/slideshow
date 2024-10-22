@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slideshow</title>
+    <style>
+      .container {
+        margin: 50px auto;
+        position: relative;
+        width:350px;
+        height:350px;
+        background-color: aqua;
+      }
+
+      .slide {
+        height: 300px;
+        width: 300px;
+        border-radius: 10px;
+        justify-content: center;
+      }
+
+      .ico-action {
+        height: 80px;
+        position: absolute;
+        top: 40%;
+        justify-content: center;
+        cursor: pointer;
+        transition: 0.5s;
+      }
+
+      .ico-prev {
+        left: 0;
+      }
+
+      .ico-prev:hover {
+        transform: scale(0.8) translateX(-10px);
+      }
+
+      .ico-next {
+        right: 0;
+      }
+
+      .ico-next:hover {
+        transform: scale(0.8) translateX(10px);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img src="img/cake.png" class="slide" id="slide" />
+      <img src="img/pre.png" class="ico-action ico-prev" onclick="prev()" />
+      <img src="img/next.png" class="ico-action ico-next" onclick="next()" />
+    </div>
+
+    <script>
+      const images = [
+        "img/cake.png",
+        "img/burger.png",
+        "img/juices.png",
+        "img/pizza.png",
+        "img/soft-drink.png",
+        "img/breakfast.png",
+      ];
+
+      let index = 0;
+      const slide = document.getElementById("slide");
+
+      function next() {
+        if (index < images.length - 1) {
+          index++;
+        } else {
+          index = 0;
+        }
+
+        slide.src = images[index];
+      }
+
+      function prev() {
+        if (index > 0) {
+          index--;
+        } else {
+          index = images.length - 1;
+        }
+
+        slide.src = images[index];
+      }
+
+      setInterval(next , 2000);
+    </script>
+  </body>
+</html
